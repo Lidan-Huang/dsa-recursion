@@ -8,19 +8,14 @@ function product(nums) {
 
 /** longest: return the length of the longest word in an array of words. */
 
-function longest(words) {
-  if (words.length === 0) return;
+function longest(words) { 
+  if (words.length === 1) return words[0].length;
 
-  let max = -Infinity;
-
+  let max = longest(words.slice(1));
+   
   if (words[0].length > max) {
-    max = words[0].length;
+    max = words[0].length;          
   }
-
-  for (let word of words) {
-    longest(words.slice(1)); 
-  }
-
   return max;
 }
 
