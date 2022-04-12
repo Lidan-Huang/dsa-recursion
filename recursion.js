@@ -8,13 +8,13 @@ function product(nums) {
 
 /** longest: return the length of the longest word in an array of words. */
 
-function longest(words) { 
+function longest(words) {
   if (words.length === 0) return 0;
 
   let max = longest(words.slice(1));
-   
+
   if (words[0].length > max) {
-    max = words[0].length;          
+    max = words[0].length;
   }
   return max;
 }
@@ -32,8 +32,8 @@ function everyOther(str) {
 function isPalindrome(str) {
   if (str.length === 0 || str.length === 1) return true;
   if (str[0] !== str[str.length - 1]) return false;
-  
-  return isPalindrome(str.slice(1,-1));  
+
+  return isPalindrome(str.slice(1, -1));
 }
 
 /** findIndex: return the index of val in arr (or -1 if val is not present). */
@@ -52,17 +52,25 @@ function findIndex(arr, val) {
 function revString(str) {
   if (str.length === 0) return "";
 
-  return str.slice(-1) + revString(str.slice(0,-1));
+  return str.slice(-1) + revString(str.slice(0, -1));
 }
 
 /** gatherStrings: given an object, return an array of all of the string values. */
 
-function gatherStrings(obj) {
-  if (obj == {}) return [];
+function gatherStrings(obj, strings = []) {
 
   for (let key in obj) {
-    if ()
+    let val = obj[key];
+    console.log("strings ********:", strings);
+    if (typeof (val) === 'object' && !Array.isArray(val) && val !== null) {
+      gatherStrings(val, strings);
+    } else {
+      if (typeof (val) === 'string') {
+        strings.push(val);
+      }
+    }
   }
+  return strings;
 }
 
 /** binarySearch: given a sorted array of numbers, and a value,
