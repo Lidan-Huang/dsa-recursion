@@ -1,3 +1,4 @@
+"use strict";
 /** product: calculate the product of an array of numbers. */
 
 function product(nums) {
@@ -51,18 +52,15 @@ function findIndex(arr, val) {
 
 function revString(str) {
     if (str.length === 0) return "";
-
     return str.slice(-1) + revString(str.slice(0, -1));
 }
 
 /** gatherStrings: given an object, return an array of all of the string values. */
 
 function gatherStrings(obj, strings = []) {
-
     for (let key in obj) {
         let val = obj[key];
-        console.log("strings ********:", strings);
-        if (typeof (val) === 'object' && !Array.isArray(val) && val !== null) {
+        if (typeof(val) === 'object' && !Array.isArray(val) && val !== null) {
             gatherStrings(val, strings);
         } else {
             if (typeof (val) === 'string') {
